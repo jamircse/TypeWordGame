@@ -34,12 +34,12 @@ var  gameinit=()=>{
 }
 
 typyword.addEventListener('keyup',()=>{
-    const checkword=typyword.value.toLocaleLowerCase();
-     if(checkword==currentWord){
+    const currentType=typyword.value.toLocaleLowerCase();
+     if(currentType==currentWord){
         showMassage('Congrate..','success');
         clearInterval(timer);
         gameinit();   
-    }else if(checkword.length==checkword.length && checkword!=currentWord){
+    }else if(currentType.length==currentWord.length && checkword!=currentWord){
         showMassage('🤣 incurrect ','danger');
         clearInterval(timer);
         gameinit();   
