@@ -2,7 +2,8 @@
 // console.log(datas.length);
 // console.log(datas);
 
-var currentWord,timer,point=0,level=0;
+var currentWord,timer,level=0;
+var point=JSON.parse(localStorage.getItem("point"));
 const stepUrl=document.querySelector(".step");
 const typyword=document.querySelector(".textfield");;
 const pointUrl=document.querySelector(".point");
@@ -58,6 +59,7 @@ var checkpointLevel=()=>{
         level=1;
     }
     stepUrl.innerText=level;
+    localStorage.setItem("step",JSON.stringify(point));
 }
 
 
