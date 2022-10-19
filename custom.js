@@ -2,10 +2,10 @@
 // console.log(datas.length);
 // console.log(datas);
 
-var currentWord,timer;
-const refreshbtn=document.querySelector(".refresh_word");
+var currentWord,timer,point=0,level=0;
+const stepUrl=document.querySelector(".step");
 const typyword=document.querySelector(".textfield");;
-const check_btn=document.querySelector(".btn_check");
+const pointUrl=document.querySelector(".point");
 var time=document.querySelector(".time_left");;
 
 var initTimer=(maxTime)=>{
@@ -20,7 +20,6 @@ var initTimer=(maxTime)=>{
 }
 
 
-
 var  gameinit=()=>{
   initTimer(10);
   const word_length=datas.length
@@ -33,46 +32,33 @@ var  gameinit=()=>{
 
 }
 
-typyword.addEventListener('keyup',()=>{
-    const currentType=typyword.value.toLocaleLowerCase();
-     if(currentType==currentWord){
+typyword.addEventListener("keyup",()=>{
+    const currentType=typyword.value.toLocaleLowerCase();     
+    if(currentType==currentWord){
         showMassage('Congrate..','success');
+        point++;
+        checkpointLevel();
         clearInterval(timer);
         gameinit();   
     }else if(currentType.length==currentWord.length && currentType!=currentWord){
         showMassage('🤣 incurrect ','danger');
+        point--;
+        if(point<0){
+            point=0;
+        }
+        checkpointLevel();
         clearInterval(timer);
         gameinit();   
-    }
+    }             
 });
 
-
-
-check_btn.addEventListener('click',()=>{
-    const typyword=document.querySelector(".textfield");;
-    const checkword=typyword.value.toLocaleLowerCase();
-    if(!checkword){
-        showMassage('Please Type Word','danger');
-        clearInterval(timer);
-        gameinit(); 
-    }else if(checkword==currentWord){
-        showMassage('Congrate..','success');
-        clearInterval(timer);
-        gameinit();   
-    }else if(checkword!=currentWord){
-        showMassage('🤣 incurrect ','danger');
-        clearInterval(timer);
-        gameinit();   
+var checkpointLevel=()=>{
+    pointUrl.innerText=point;
+    if(point>14 && point<=25){
+        level=1;
     }
-    
-    
-});
-
-
-refreshbtn.addEventListener('click',()=>{
-    clearInterval(timer);
-    gameinit();
-})
+    stepUrl.innerText=level;
+}
 
 
 var showMassage = (message, status) => {
