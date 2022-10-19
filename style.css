@@ -21,7 +21,7 @@ body{
   display: flex;
   flex-direction: column;
   justify-content: center;
-  width:350px;
+  width: 350px;
   background: #eee
   border: 1px solid #000;
   border-radius: 10px;
@@ -65,7 +65,7 @@ body{
     display:flex;
     justify-content: space-between;
 }
-.button_box button{
+.button_box div{
     padding: 5px;
     border-radius:5px;
     background:#C48404;
