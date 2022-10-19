@@ -44,7 +44,9 @@ typyword.addEventListener('keyup',()=>{
         clearInterval(timer);
         gameinit();   
     }
-}
+});
+
+
 
 check_btn.addEventListener('click',()=>{
     const typyword=document.querySelector(".textfield");;
