@@ -59,7 +59,7 @@ var checkpointLevel=()=>{
         level=1;
     }
     stepUrl.innerText=level;
-    localStorage.setItem("step",JSON.stringify(point));
+    localStorage.setItem("point",JSON.stringify(point));
 }
 
 
