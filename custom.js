@@ -39,7 +39,7 @@ typyword.addEventListener('keyup',()=>{
         showMassage('Congrate..','success');
         clearInterval(timer);
         gameinit();   
-    }else if(currentType.length==currentWord.length && checkword!=currentWord){
+    }else if(currentType.length==currentWord.length && currentType!=currentWord){
         showMassage('🤣 incurrect ','danger');
         clearInterval(timer);
         gameinit();   
