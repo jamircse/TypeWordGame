@@ -33,7 +33,18 @@ var  gameinit=()=>{
 
 }
 
-
+typyword.addEventListener('keyup',()=>{
+    const checkword=typyword.value.toLocaleLowerCase();
+     if(checkword==currentWord){
+        showMassage('Congrate..','success');
+        clearInterval(timer);
+        gameinit();   
+    }else if(checkword.length==checkword.length && checkword!=currentWord){
+        showMassage('🤣 incurrect ','danger');
+        clearInterval(timer);
+        gameinit();   
+    }
+}
 
 check_btn.addEventListener('click',()=>{
     const typyword=document.querySelector(".textfield");;
