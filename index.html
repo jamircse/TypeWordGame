@@ -11,28 +11,36 @@
 </head>
 <body>
     <div class="container">
+       <div class="start">
+           <button class="btn_start">Start</button>
+       </div>
         <div class="gamebox">
-            <div class="title">
-                <h4>Word Typing Game</h4>
+           <div class="timer">
+<!--                <span ><b>Time left: <i class="time_left"></i>s </b></span>-->
+                
             </div>
+            <div class="title">
+<!--                <h4>Word Typing Game</h4>-->
+           <span ><b>Time left: <i class="time_left"></i>s </b></span>
+            </div>
+            <div class="button_box">
+                <div class="refresh_word">Currect: <span class="point"></span> </div>
+                <div class="btn_check">Wrong: <span class="step"></span></div>
+            </div>
+             
             <div class="word_screen">
                 <h2 class="word_title"> </h2>
             </div>
-            <div class="timer">
-                <span ><b>Time left: <i class="time_left"></i>s </b></span>
+           
+            <div class="input_field">
+                <input type="text" class="textfield"  placeholder="Type Here...">
                 <span class="msg"></span>
             </div>
-            <div class="input_field">
-                <input type="text" class="textfield" placeholder="Type Here...">
-            </div>
-            <div class="button_box">
-                <div class="refresh_word">Point: <span class="point"></span> </div>
-                <div class="btn_check">Step: <span class="step"></span></div>
-            </div>
+            
         </div>
     </div>
     <!-- <script type="text/javascript" src="data.json"></script> -->
     <script  src="custom.js"></script>
-    
+<!--    onkeyup="if(this.value.match(/\w+/)) this.value=this.value.replace(/\w+/g,'')"-->
 </body>
 </html>
