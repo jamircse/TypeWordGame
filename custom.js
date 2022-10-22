@@ -2,27 +2,40 @@
 // console.log(datas.length);
 // console.log(datas);
 
-var currentWord,timer,level=0;
-var point=JSON.parse(localStorage.getItem("point"));
-const stepUrl=document.querySelector(".step");
+var currentWord,timer,currect=0,wrong=0,totaltime;
+var startbtn=document.querySelector(".btn_start");
+const wrongType=document.querySelector(".step");
 const typyword=document.querySelector(".textfield");;
-const pointUrl=document.querySelector(".point");
+const CurrectType=document.querySelector(".point");
 var time=document.querySelector(".time_left");;
+
+
 
 var initTimer=(maxTime)=>{
     timer=setInterval(()=>{
+        typyword.disabled = false;
         if(maxTime>0){
             maxTime--;  
             return time.innerText=maxTime;  
+        }else{
+           typyword.disabled = true; 
         }
-        clearInterval(timer);
-        gameinit();                 
+        
+//        clearInterval(timer);
+//        gameinit();             
     },1000);  
 }
 
-
+startbtn.addEventListener("click",()=>{
+    gameinit();
+    currect=0;wrong=0;
+    clearInterval(timer);
+    initTimer(60);
+    startbtn.innerText="Restart";
+})
 var  gameinit=()=>{
-  initTimer(10);
+//  initTimer(60);
+  showResult();
   const word_length=datas.length
   const randomObj=datas[Math.floor(Math.random()*word_length)];
   const question=document.querySelector(".word_title");
@@ -37,30 +50,25 @@ typyword.addEventListener("keyup",()=>{
     const currentType=typyword.value.toLocaleLowerCase();     
     if(currentType==currentWord){
         showMassage('Congrate..','success');
-        point++;
-        checkpointLevel();
-        clearInterval(timer);
+        currect++;
+        showResult();
+//        clearInterval(timer);
         gameinit();   
     }else if(currentType.length==currentWord.length && currentType!=currentWord){
         showMassage('🤣 incurrect ','danger');
-        point--;
-        if(point<0){
-            point=0;
-        }
-        checkpointLevel();
-        clearInterval(timer);
+        wrong++;
+        showResult();
+//        clearInterval(timer);
         gameinit();   
     }             
 });
 
-var checkpointLevel=()=>{
-    pointUrl.innerText=point;
-    if(point>14 && point<=25){
-        level=1;
-    }
-    stepUrl.innerText=level;
-    localStorage.setItem("point",JSON.stringify(point));
+
+var showResult=()=>{
+    CurrectType.innerText=currect;
+    wrongType.innerText=wrong;
 }
+
 
 
 var showMassage = (message, status) => {
@@ -75,4 +83,3 @@ var showMassage = (message, status) => {
     }, 2000)
 }
 
-gameinit();
