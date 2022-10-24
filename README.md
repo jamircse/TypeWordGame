@@ -1,5 +1,5 @@
-# TypeWordGame
-TypeWordGame Random Word selection and Type word within a fix time.
+# Typing Test 
+Typing test Random Word selection and Type word within a fix time.
 
 # Preview
 
